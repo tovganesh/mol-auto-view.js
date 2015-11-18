@@ -24,13 +24,13 @@
       <div class="col-sm-6">
         <form>
           <fieldset class="form-group">
-            <lable for="molecule">Molecule Description</lable>
+            <label for="molecule">Molecule Description</label>
             <input type="text" ng-model="molecule" ng-change="fetchMolecule()" ng-model-options="{debounce: 750}" class="form-control"
             id="molecule">
             <small class="text-muted">IUPAC Name / CAS number / Smiles / InChlKey that would help to get the structure of molecule</small>
           </fieldset>
           <fieldset class="form-group">
-            <lable for="JME">Draw Molecule</lable>
+            <label for="JME">Draw Molecule</label>
             <div name="JME" id="JME" width="350" height="330" id="JME"></div>
             <small class="text-muted">Use the above editor to edit molecule structure</small>
           </fieldset>
@@ -42,7 +42,7 @@
         </form>
       </div>
       <div class="col-sm-6">
-        <lable ng-show="moleculeList.length>0">Molecule List</lable>
+        <label ng-show="moleculeList.length>0">Molecule List</label>
         <ul class="list-group">
           <li class="list-group-item" ng-repeat="moleculeEntry in moleculeList">
             <span class="badge">{{$index+1}}</span>
