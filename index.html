@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/angular.min.js"></script>
+
+  <script type="text/javascript" language="javascript" src="js/JSME/jsme/jsme.nocache.js"></script>
+
+  <script src="js/molview.js"></script>
+
+  <title>Molecule Auto View</title>
+
+</head>
+
+<body ng-app="molview" ng-controller="MolViewAppCtrl">
+  <div class="wrap">
+    <div class="container-fluid">
+      <div class="col-sm-6">
+        <form>
+          <fieldset class="form-group">
+            <lable for="molecule">Molecule Description</lable>
+            <input type="text" ng-model="molecule" ng-change="fetchMolecule()" ng-model-options="{debounce: 750}" class="form-control"
+            id="molecule">
+            <small class="text-muted">IUPAC Name / CAS number / Smiles / InChlKey that would help to get the structure of molecule</small>
+          </fieldset>
+          <fieldset class="form-group">
+            <lable for="JME">Draw Molecule</lable>
+            <div name="JME" id="JME" width="350" height="330" id="JME"></div>
+            <small class="text-muted">Use the above editor to edit molecule structure</small>
+          </fieldset>
+          <fieldset class="form-group">
+            <button type="button" ng-click="addToMoleculeList()" class="btn btn-lg btn-primary">
+              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Save to list
+            </button>
+          </fieldset>
+        </form>
+      </div>
+      <div class="col-sm-6">
+        <lable ng-show="moleculeList.length>0">Molecule List</lable>
+        <ul class="list-group">
+          <li class="list-group-item" ng-repeat="moleculeEntry in moleculeList">
+            <span class="badge">{{$index+1}}</span>
+            <h4>{{moleculeEntry.molecule}}</h4>
+            <p class="list-group-item-text">
+              <img class="right-block" height="100px" ng-src="data:image/svg+xml;base64,{{moleculeEntry.molImage}}">
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>
